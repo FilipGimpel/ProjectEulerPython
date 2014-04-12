@@ -1,13 +1,14 @@
 import math
+import time
 
 # Lets get the dummiest primality test algorithm and succesively improve it
 # Number n is prime when it can only be divided with no reminder by 1 and n
 
 def isPrimeDumb(n):
-	for i in range(2, n):
-		if n % i == 0:
-			return False
-	return True
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
 
 # We may notice that checking even numbers or number over n/2 is redundant
 # Next observation is that numbers over sqrt(n) are just multiplications 
@@ -38,22 +39,20 @@ def sieve(limit):
     nextPrime = 2;
 
     primeLimit = int(math.sqrt(limit))
-
-    for k in range(0, primeLimit):        
+  
+    while nextPrime < primeLimit:
         for x in primeList:
             if (x % nextPrime == 0 and x != nextPrime):
                 primeList.remove(x)
 
         nextPrime = find(lambda z : z > nextPrime, primeList)
-        #print p
 
     return primeList
-
 
 # this is small utility method which I found when searching for a
 # nice way of retrieving element that satisfies condition f
 # from an iterator (thanks to http://tomayko.com/writings/cleanest-python-find-in-list-function)
-# I wanted some kind of oneliner, such as reduce(f, peeps), but this requires to iterate over whole
+# I wanted some kind of oneliner, such as reduce(f, seq), but this requires to iterate over whole
 # set
 
 def find(f, seq):
@@ -74,7 +73,10 @@ def largestPrimeFactor(n):
 
     return None
 
-toBeFactored = 600851475143
 
+start_time = time.time()
+
+toBeFactored = 600851475143
 print largestPrimeFactor(toBeFactored)
 
+print time.time() - start_time, "seconds"
