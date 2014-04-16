@@ -73,10 +73,8 @@ def largestPrimeFactor(n):
 
     return None
 
-
-start_time = time.time()
-
-toBeFactored = 600851475143
-print largestPrimeFactor(toBeFactored)
-
-print time.time() - start_time, "seconds"
+def solve():
+    start_time = time.time()
+    toBeFactored = 600851475143
+    print largestPrimeFactor(toBeFactored)
+    print time.time() - start_time, "seconds"

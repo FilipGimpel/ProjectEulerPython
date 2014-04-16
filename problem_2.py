@@ -12,4 +12,5 @@ def fib(maxval):
         j = tmp + j
 
 
-print sum(fib(4000000))
+def solve():
+	print sum(fib(4000000))

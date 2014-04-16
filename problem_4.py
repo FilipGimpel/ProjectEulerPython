@@ -62,17 +62,19 @@ def yieldMeStuff(loweLimitInclusive, upperLimitInclusive):
             yield i * j
 
 
-# now A is a list of products of all three digit numbers,
-A = [ i for i in yieldMeStuff(100, 999)]
 
-# sorted descending
-A.sort(reverse=True)
+def solve():
+    # now A is a list of products of all three digit numbers,
+    A = [ i for i in yieldMeStuff(100, 999)]
 
-# lets search for a pallindrome, starting from biggest number
-# when we find one, checking others is redundant
-for i in A:
-    if isPalindrome(i, 10):
-        print i
-        break
+    # sorted descending
+    A.sort(reverse=True)
+
+    # lets search for a pallindrome, starting from biggest number
+    # when we find one, checking others is redundant
+    for i in A:
+        if isPalindrome(i, 10):
+            print i
+            break
 
 # found the soution in 0.6 seconds!
